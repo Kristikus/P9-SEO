@@ -1,7 +1,7 @@
 (function($) {
   $.fn.mauGallery = function(options) {
-    let options = $.extend($.fn.mauGallery.defaults, options);
-    let tagsCollection = [];
+    var options = $.extend($.fn.mauGallery.defaults, options);
+    var tagsCollection = [];
     return this.each(function() {
       $.fn.mauGallery.methods.createRowWrapper($(this));
       if (options.lightBox) {
@@ -19,7 +19,7 @@
           $.fn.mauGallery.methods.responsiveImageItem($(this));
           $.fn.mauGallery.methods.moveItemInRowWrapper($(this));
           $.fn.mauGallery.methods.wrapItemInColumn($(this), options.columns);
-          let theTag = $(this).data("gallery-tag");
+          var theTag = $(this).data("gallery-tag");
           if (
             options.showTags &&
             theTag !== undefined &&
@@ -82,7 +82,7 @@
           `<div class='item-column mb-4 col-${Math.ceil(12 / columns)}'></div>`
         );
       } else if (columns.constructor === Object) {
-        let columnClasses = "";
+        var columnClasses = "";
         if (columns.xs) {
           columnClasses += ` col-${Math.ceil(12 / columns.xs)}`;
         }
@@ -219,13 +219,13 @@
             </div>`);
     },
     showItemTags(gallery, position, tags) {
-      let tagItems =
+      var tagItems =
         '<li class="nav-item"><span class="nav-link active active-tag"  data-images-toggle="all">Tous</span></li>';
       $.each(tags, function(index, value) {
         tagItems += `<li class="nav-item active">
                 <span class="nav-link"  data-images-toggle="${value}">${value}</span></li>`;
       });
-      let tagsRow = `<ul class="my-4 tags-bar nav nav-pills">${tagItems}</ul>`;
+      var tagsRow = `<ul class="my-4 tags-bar nav nav-pills">${tagItems}</ul>`;
 
       if (position === "bottom") {
         gallery.append(tagsRow);
@@ -242,7 +242,7 @@
       $(".active.active-tag").removeClass("active active-tag");
       $(this).addClass("active-tag active");
 
-      let tag = $(this).data("images-toggle");
+      var tag = $(this).data("images-toggle");
 
       $(".gallery-item").each(function() {
         $(this)
